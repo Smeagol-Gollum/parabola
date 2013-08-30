@@ -1,4 +1,4 @@
 parabola
 ========
 
-A git repo for the Parabola coin.
+see readme.md in the /src directory
