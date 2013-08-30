@@ -2,7 +2,7 @@
 #include "ui_sendcoinsdialog.h"
 
 #include "walletmodel.h"
-#include "bitcoinunits.h"
+#include "parabolaunits.h"
 #include "addressbookpage.h"
 #include "optionsmodel.h"
 #include "sendcoinsentry.h"
@@ -94,7 +94,7 @@ void SendCoinsDialog::on_sendButton_clicked()
     QStringList formatted;
     foreach(const SendCoinsRecipient &rcp, recipients)
     {
-        QString amount = BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, rcp.amount);
+        QString amount = ParabolaUnits::formatWithUnit(ParabolaUnits::X^2, rcp.amount);
         if (rcp.authenticatedMerchant.isEmpty())
         {
             QString address = rcp.address;
@@ -158,7 +158,7 @@ void SendCoinsDialog::on_sendButton_clicked()
     case WalletModel::AmountWithFeeExceedsBalance:
         QMessageBox::warning(this, tr("Send Coins"),
             tr("The total exceeds your balance when the %1 transaction fee is included.").
-            arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, sendstatus.fee)),
+            arg(ParabolaUnits::formatWithUnit(ParabolaUnits::X^2, sendstatus.fee)),
             QMessageBox::Ok, QMessageBox::Ok);
         break;
     case WalletModel::DuplicateAddress:
@@ -321,7 +321,7 @@ bool SendCoinsDialog::handlePaymentRequest(const SendCoinsRecipient &rv)
         }
     }
     else {
-        CBitcoinAddress address(rv.address.toStdString());
+        CParabolaAddress address(rv.address.toStdString());
         if (!address.IsValid()) {
             QString strAddress(address.ToString().c_str());
             QMessageBox::warning(this, tr("Send Coins"),
@@ -342,7 +342,7 @@ void SendCoinsDialog::setBalance(qint64 balance, qint64 unconfirmedBalance, qint
         return;
 
     int unit = model->getOptionsModel()->getDisplayUnit();
-    ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
+    ui->labelBalance->setText(ParabolaUnits::formatWithUnit(unit, balance));
 }
 
 void SendCoinsDialog::updateDisplayUnit()
@@ -350,6 +350,6 @@ void SendCoinsDialog::updateDisplayUnit()
     if(model && model->getOptionsModel())
     {
         // Update labelBalance with the current balance and the current unit
-        ui->labelBalance->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), model->getBalance()));
+        ui->labelBalance->setText(ParabolaUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), model->getBalance()));
     }
 }

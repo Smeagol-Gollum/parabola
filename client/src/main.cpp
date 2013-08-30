@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Parabola developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -65,7 +65,7 @@ map<uint256, set<uint256> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "Bitcoin Signed Message:\n";
+const string strMessageMagic = "Parabola Signed Message:\n";
 
 double dHashesPerSec = 0.0;
 int64 nHPSTimerStart = 0;
@@ -531,7 +531,7 @@ bool IsFinalTx(const CTransaction &tx, int nBlockHeight, int64 nBlockTime)
     return true;
 }
 
-/** Amount of bitcoins spent by the transaction.
+/** Amount of parabolas spent by the transaction.
     @return sum of all outputs (note: does not include fees)
  */
 int64 GetValueOut(const CTransaction& tx)
@@ -1851,7 +1851,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("bitcoin-scriptch");
+    RenameThread("parabola-scriptch");
     scriptcheckqueue.Thread();
 }
 

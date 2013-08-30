@@ -1,27 +1,27 @@
-#ifndef BITCOINUNITS_H
-#define BITCOINUNITS_H
+#ifndef PARABOLAUNITS_H
+#define PARABOLAUNITS_H
 
 #include <QString>
 #include <QAbstractListModel>
 
-/** Bitcoin unit definitions. Encapsulates parsing and formatting
+/** Parabola unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
-class BitcoinUnits: public QAbstractListModel
+class ParabolaUnits: public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    explicit BitcoinUnits(QObject *parent);
+    explicit ParabolaUnits(QObject *parent);
 
-    /** Bitcoin units.
-      @note Source: https://en.bitcoin.it/wiki/Units . Please add only sensible ones
+    /** Parabola units.
+      @note Source: https://en.parabola.it/wiki/Units . Please add only sensible ones
      */
     enum Unit
     {
-        BTC,
-        mBTC,
-        uBTC
+        X^2,
+        mX^2,
+        uX^2
     };
 
     //! @name Static API
@@ -64,8 +64,8 @@ public:
     ///@}
 
 private:
-    QList<BitcoinUnits::Unit> unitlist;
+    QList<ParabolaUnits::Unit> unitlist;
 };
-typedef BitcoinUnits::Unit BitcoinUnit;
+typedef ParabolaUnits::Unit ParabolaUnit;
 
-#endif // BITCOINUNITS_H
+#endif // PARABOLAUNITS_H

@@ -1,102 +1,102 @@
-#include "bitcoinunits.h"
+#include "parabolaunits.h"
 
 #include <QStringList>
 
-BitcoinUnits::BitcoinUnits(QObject *parent):
+ParabolaUnits::ParabolaUnits(QObject *parent):
         QAbstractListModel(parent),
         unitlist(availableUnits())
 {
 }
 
-QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
+QList<ParabolaUnits::Unit> ParabolaUnits::availableUnits()
 {
-    QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(BTC);
-    unitlist.append(mBTC);
-    unitlist.append(uBTC);
+    QList<ParabolaUnits::Unit> unitlist;
+    unitlist.append(X^2);
+    unitlist.append(mX^2);
+    unitlist.append(uX^2);
     return unitlist;
 }
 
-bool BitcoinUnits::valid(int unit)
+bool ParabolaUnits::valid(int unit)
 {
     switch(unit)
     {
-    case BTC:
-    case mBTC:
-    case uBTC:
+    case X^2:
+    case mX^2:
+    case uX^2:
         return true;
     default:
         return false;
     }
 }
 
-QString BitcoinUnits::name(int unit)
+QString ParabolaUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("BTC");
-    case mBTC: return QString("mBTC");
-    case uBTC: return QString::fromUtf8("μBTC");
+    case X^2: return QString("X^2");
+    case mX^2: return QString("mX^2");
+    case uX^2: return QString::fromUtf8("μX^2");
     default: return QString("???");
     }
 }
 
-QString BitcoinUnits::description(int unit)
+QString ParabolaUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("Bitcoins");
-    case mBTC: return QString("Milli-Bitcoins (1 / 1,000)");
-    case uBTC: return QString("Micro-Bitcoins (1 / 1,000,000)");
+    case X^2: return QString("Parabolas");
+    case mX^2: return QString("Milli-Parabolas (1 / 1,000)");
+    case uX^2: return QString("Micro-Parabolas (1 / 1,000,000)");
     default: return QString("???");
     }
 }
 
-qint64 BitcoinUnits::factor(int unit)
+qint64 ParabolaUnits::factor(int unit)
 {
     switch(unit)
     {
-    case BTC:  return 100000000;
-    case mBTC: return 100000;
-    case uBTC: return 100;
+    case X^2:  return 100000000;
+    case mX^2: return 100000;
+    case uX^2: return 100;
     default:   return 100000000;
     }
 }
 
-qint64 BitcoinUnits::maxAmount(int unit)
+qint64 ParabolaUnits::maxAmount(int unit)
 {
     switch(unit)
     {
-    case BTC:  return Q_INT64_C(21000000);
-    case mBTC: return Q_INT64_C(21000000000);
-    case uBTC: return Q_INT64_C(21000000000000);
+    case X^2:  return Q_INT64_C(21000000);
+    case mX^2: return Q_INT64_C(21000000000);
+    case uX^2: return Q_INT64_C(21000000000000);
     default:   return 0;
     }
 }
 
-int BitcoinUnits::amountDigits(int unit)
+int ParabolaUnits::amountDigits(int unit)
 {
     switch(unit)
     {
-    case BTC: return 8; // 21,000,000 (# digits, without commas)
-    case mBTC: return 11; // 21,000,000,000
-    case uBTC: return 14; // 21,000,000,000,000
+    case X^2: return 8; // 21,000,000 (# digits, without commas)
+    case mX^2: return 11; // 21,000,000,000
+    case uX^2: return 14; // 21,000,000,000,000
     default: return 0;
     }
 }
 
-int BitcoinUnits::decimals(int unit)
+int ParabolaUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case BTC: return 8;
-    case mBTC: return 5;
-    case uBTC: return 2;
+    case X^2: return 8;
+    case mX^2: return 5;
+    case uX^2: return 2;
     default: return 0;
     }
 }
 
-QString BitcoinUnits::format(int unit, qint64 n, bool fPlus)
+QString ParabolaUnits::format(int unit, qint64 n, bool fPlus)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
@@ -123,12 +123,12 @@ QString BitcoinUnits::format(int unit, qint64 n, bool fPlus)
     return quotient_str + QString(".") + remainder_str;
 }
 
-QString BitcoinUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
+QString ParabolaUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
 {
     return format(unit, amount, plussign) + QString(" ") + name(unit);
 }
 
-bool BitcoinUnits::parse(int unit, const QString &value, qint64 *val_out)
+bool ParabolaUnits::parse(int unit, const QString &value, qint64 *val_out)
 {
     if(!valid(unit) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -165,13 +165,13 @@ bool BitcoinUnits::parse(int unit, const QString &value, qint64 *val_out)
     return ok;
 }
 
-int BitcoinUnits::rowCount(const QModelIndex &parent) const
+int ParabolaUnits::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return unitlist.size();
 }
 
-QVariant BitcoinUnits::data(const QModelIndex &index, int role) const
+QVariant ParabolaUnits::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if(row >= 0 && row < unitlist.size())

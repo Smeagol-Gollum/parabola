@@ -1,7 +1,7 @@
-#include "bitcoinamountfield.h"
+#include "parabolaamountfield.h"
 
 #include "qvaluecombobox.h"
-#include "bitcoinunits.h"
+#include "parabolaunits.h"
 #include "guiconstants.h"
 
 #include <QApplication>
@@ -11,7 +11,7 @@
 
 #include <qmath.h> // for qPow()
 
-BitcoinAmountField::BitcoinAmountField(QWidget *parent):
+ParabolaAmountField::ParabolaAmountField(QWidget *parent):
         QWidget(parent), amount(0), currentUnit(-1)
 {
     amount = new QDoubleSpinBox(this);
@@ -24,7 +24,7 @@ BitcoinAmountField::BitcoinAmountField(QWidget *parent):
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(amount);
     unit = new QValueComboBox(this);
-    unit->setModel(new BitcoinUnits(this));
+    unit->setModel(new ParabolaUnits(this));
     layout->addWidget(unit);
     layout->addStretch(1);
     layout->setContentsMargins(0,0,0,0);
@@ -42,7 +42,7 @@ BitcoinAmountField::BitcoinAmountField(QWidget *parent):
     unitChanged(unit->currentIndex());
 }
 
-void BitcoinAmountField::setText(const QString &text)
+void ParabolaAmountField::setText(const QString &text)
 {
     if (text.isEmpty())
         amount->clear();
@@ -50,20 +50,20 @@ void BitcoinAmountField::setText(const QString &text)
         amount->setValue(text.toDouble());
 }
 
-void BitcoinAmountField::clear()
+void ParabolaAmountField::clear()
 {
     amount->clear();
     unit->setCurrentIndex(0);
 }
 
-bool BitcoinAmountField::validate()
+bool ParabolaAmountField::validate()
 {
     bool valid = true;
     if (amount->value() == 0.0)
         valid = false;
-    else if (!BitcoinUnits::parse(currentUnit, text(), 0))
+    else if (!ParabolaUnits::parse(currentUnit, text(), 0))
         valid = false;
-    else if (amount->value() > BitcoinUnits::maxAmount(currentUnit))
+    else if (amount->value() > ParabolaUnits::maxAmount(currentUnit))
         valid = false;
 
     setValid(valid);
@@ -71,7 +71,7 @@ bool BitcoinAmountField::validate()
     return valid;
 }
 
-void BitcoinAmountField::setValid(bool valid)
+void ParabolaAmountField::setValid(bool valid)
 {
     if (valid)
         amount->setStyleSheet("");
@@ -79,7 +79,7 @@ void BitcoinAmountField::setValid(bool valid)
         amount->setStyleSheet(STYLE_INVALID);
 }
 
-QString BitcoinAmountField::text() const
+QString ParabolaAmountField::text() const
 {
     if (amount->text().isEmpty())
         return QString();
@@ -87,7 +87,7 @@ QString BitcoinAmountField::text() const
         return amount->text();
 }
 
-bool BitcoinAmountField::eventFilter(QObject *object, QEvent *event)
+bool ParabolaAmountField::eventFilter(QObject *object, QEvent *event)
 {
     if (event->type() == QEvent::FocusIn)
     {
@@ -108,16 +108,16 @@ bool BitcoinAmountField::eventFilter(QObject *object, QEvent *event)
     return QWidget::eventFilter(object, event);
 }
 
-QWidget *BitcoinAmountField::setupTabChain(QWidget *prev)
+QWidget *ParabolaAmountField::setupTabChain(QWidget *prev)
 {
     QWidget::setTabOrder(prev, amount);
     return amount;
 }
 
-qint64 BitcoinAmountField::value(bool *valid_out) const
+qint64 ParabolaAmountField::value(bool *valid_out) const
 {
     qint64 val_out = 0;
-    bool valid = BitcoinUnits::parse(currentUnit, text(), &val_out);
+    bool valid = ParabolaUnits::parse(currentUnit, text(), &val_out);
     if (valid_out)
     {
         *valid_out = valid;
@@ -125,23 +125,23 @@ qint64 BitcoinAmountField::value(bool *valid_out) const
     return val_out;
 }
 
-void BitcoinAmountField::setValue(qint64 value)
+void ParabolaAmountField::setValue(qint64 value)
 {
-    setText(BitcoinUnits::format(currentUnit, value));
+    setText(ParabolaUnits::format(currentUnit, value));
 }
 
-void BitcoinAmountField::setReadOnly(bool fReadeOnly)
+void ParabolaAmountField::setReadOnly(bool fReadeOnly)
 {
     // TODO ...
 }
 
-void BitcoinAmountField::unitChanged(int idx)
+void ParabolaAmountField::unitChanged(int idx)
 {
     // Use description tooltip for current unit for the combobox
     unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());
 
     // Determine new unit ID
-    int newUnit = unit->itemData(idx, BitcoinUnits::UnitRole).toInt();
+    int newUnit = unit->itemData(idx, ParabolaUnits::UnitRole).toInt();
 
     // Parse current value and convert to new unit
     bool valid = false;
@@ -150,10 +150,10 @@ void BitcoinAmountField::unitChanged(int idx)
     currentUnit = newUnit;
 
     // Set max length after retrieving the value, to prevent truncation
-    amount->setDecimals(BitcoinUnits::decimals(currentUnit));
-    amount->setMaximum(qPow(10, BitcoinUnits::amountDigits(currentUnit)) - qPow(10, -amount->decimals()));
+    amount->setDecimals(ParabolaUnits::decimals(currentUnit));
+    amount->setMaximum(qPow(10, ParabolaUnits::amountDigits(currentUnit)) - qPow(10, -amount->decimals()));
 
-    if (currentUnit == BitcoinUnits::uBTC)
+    if (currentUnit == ParabolaUnits::uX^2)
         amount->setSingleStep(0.01);
     else
         amount->setSingleStep(0.001);
@@ -171,7 +171,7 @@ void BitcoinAmountField::unitChanged(int idx)
     setValid(true);
 }
 
-void BitcoinAmountField::setDisplayUnit(int newUnit)
+void ParabolaAmountField::setDisplayUnit(int newUnit)
 {
     unit->setValue(newUnit);
 }

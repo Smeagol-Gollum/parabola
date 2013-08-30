@@ -1,4 +1,4 @@
-The following is a list of assets used in the bitcoin source and their proper attribution.
+The following is a list of assets used in the parabola source and their proper attribution.
 
 [Wladimir van der Laan](https://github.com/laanwj)
 -----------------------
@@ -45,7 +45,7 @@ md2k7
 
 ### Info
 * Designer: md2k7
-* Site: https://bitcointalk.org/index.php?topic=15276.0
+* Site: https://parabolatalk.org/index.php?topic=15276.0
 * License: You are free to do with these icons as you wish, including selling,
  copying, modifying etc.
 * License: MIT
@@ -93,12 +93,12 @@ Jonas Schnelli
 -----------------------
 
 ### Info
-* Designer: Jonas Schnelli (based on the original bitcoin logo from Bitboy)
+* Designer: Jonas Schnelli (based on the original parabola logo from Bitboy)
 * License: MIT
 
 ### Assets Used
-	src/qt/res/icons/bitcoin.icns, src/qt/res/src/bitcoin.svg,
-	src/qt/res/src/bitcoin.ico, src/qt/res/src/bitcoin.png,
-	src/qt/res/src/bitcoin_testnet.png, docs/bitcoin_logo_doxygen.png,
+	src/qt/res/icons/parabola.icns, src/qt/res/src/parabola.svg,
+	src/qt/res/src/parabola.ico, src/qt/res/src/parabola.png,
+	src/qt/res/src/parabola_testnet.png, docs/parabola_logo_doxygen.png,
 	src/qt/res/icons/toolbar.png, src/qt/res/icons/toolbar_testnet.png,
 	src/qt/res/images/splash.png, src/qt/res/images/splash_testnet.png

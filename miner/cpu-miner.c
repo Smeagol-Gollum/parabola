@@ -459,7 +459,7 @@ static bool workio_get_work(struct workio_cmd *wc, CURL *curl)
 	if (!ret_work)
 		return false;
 
-	/* obtain new work from bitcoin via JSON-RPC */
+	/* obtain new work from parabola via JSON-RPC */
 	while (!get_upstream_work(curl, ret_work)) {
 		if (unlikely((opt_retries >= 0) && (++failures > opt_retries))) {
 			applog(LOG_ERR, "json_rpc_call failed, terminating workio thread");
@@ -484,7 +484,7 @@ static bool workio_submit_work(struct workio_cmd *wc, CURL *curl)
 {
 	int failures = 0;
 
-	/* submit solution to bitcoin via JSON-RPC */
+	/* submit solution to parabola via JSON-RPC */
 	while (!submit_upstream_work(curl, wc->u.work)) {
 		if (unlikely((opt_retries >= 0) && (++failures > opt_retries))) {
 			applog(LOG_ERR, "...terminating workio thread");

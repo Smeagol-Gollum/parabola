@@ -1,4 +1,4 @@
-This is a multi-threaded CPU miner for Litecoin and Bitcoin,
+This is a multi-threaded CPU miner for Litecoin and Parabola,
 fork of Jeff Garzik's reference cpuminer.
 
 License: GPLv2.  See COPYING for details.
@@ -65,4 +65,4 @@ and all_proxy environment variables.
 
 Also many issues and FAQs are covered in the forum thread
 dedicated to this program,
-	https://bitcointalk.org/index.php?topic=55038.0
+	https://parabolatalk.org/index.php?topic=55038.0

@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Parabola developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -34,7 +34,7 @@
 #include <openssl/x509_vfy.h>
 
 #include "base58.h"
-#include "bitcoinunits.h"
+#include "parabolaunits.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
@@ -46,8 +46,8 @@
 
 using namespace boost;
 
-const int BITCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString BITCOIN_IPC_PREFIX("bitcoin:");
+const int PARABOLA_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
+const QString PARABOLA_IPC_PREFIX("parabola:");
 
 X509_STORE* PaymentServer::certStore = NULL;
 void PaymentServer::freeCertStore()
@@ -66,7 +66,7 @@ void PaymentServer::freeCertStore()
 //
 static QString ipcServerName()
 {
-    QString name("BitcoinQt");
+    QString name("ParabolaQt");
 
     // Append a simple hash of the datadir
     // Note that GetDataDir(true) returns a different path
@@ -188,14 +188,14 @@ bool PaymentServer::ipcSendCommandLine(int argc, char* argv[])
         if (arg.startsWith("-"))
             continue;
 
-        if (arg.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // bitcoin:
+        if (arg.startsWith(PARABOLA_IPC_PREFIX, Qt::CaseInsensitive)) // parabola:
         {
             savedPaymentRequests.append(arg);
 
             SendCoinsRecipient r;
-            if (GUIUtil::parseBitcoinURI(arg, &r))
+            if (GUIUtil::parseParabolaURI(arg, &r))
             {
-                CBitcoinAddress address(r.address.toStdString());
+                CParabolaAddress address(r.address.toStdString());
 
                 SelectParams(CChainParams::MAIN);
                 if (!address.IsValid())
@@ -229,7 +229,7 @@ bool PaymentServer::ipcSendCommandLine(int argc, char* argv[])
     {
         QLocalSocket* socket = new QLocalSocket();
         socket->connectToServer(ipcServerName(), QIODevice::WriteOnly);
-        if (!socket->waitForConnected(BITCOIN_IPC_CONNECT_TIMEOUT))
+        if (!socket->waitForConnected(PARABOLA_IPC_CONNECT_TIMEOUT))
             return false;
 
         QByteArray block;
@@ -240,7 +240,7 @@ bool PaymentServer::ipcSendCommandLine(int argc, char* argv[])
         socket->write(block);
         socket->flush();
 
-        socket->waitForBytesWritten(BITCOIN_IPC_CONNECT_TIMEOUT);
+        socket->waitForBytesWritten(PARABOLA_IPC_CONNECT_TIMEOUT);
         socket->disconnectFromServer();
         delete socket;
         fResult = true;
@@ -255,7 +255,7 @@ PaymentServer::PaymentServer(QObject* parent,
     // compatible with the version of the headers we compiled against.
     GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-    // Install global event filter to catch QFileOpenEvents on the mac (sent when you click bitcoin: links)
+    // Install global event filter to catch QFileOpenEvents on the mac (sent when you click parabola: links)
     if (parent)
         parent->installEventFilter(this);
 
@@ -269,7 +269,7 @@ PaymentServer::PaymentServer(QObject* parent,
         uriServer = new QLocalServer(this);
 
         if (!uriServer->listen(name))
-            qDebug() << "Cannot start bitcoin: click-to-pay handler";
+            qDebug() << "Cannot start parabola: click-to-pay handler";
         else
             connect(uriServer, SIGNAL(newConnection()), this, SLOT(handleURIConnection()));
     }
@@ -284,12 +284,12 @@ PaymentServer::~PaymentServer()
 }
 
 //
-// OSX-specific way of handling bitcoin uris and
+// OSX-specific way of handling parabola uris and
 // PaymentRequest mime types
 //
 bool PaymentServer::eventFilter(QObject *, QEvent *event)
 {
-    // clicking on bitcoin: URLs creates FileOpen events on the Mac:
+    // clicking on parabola: URLs creates FileOpen events on the Mac:
     if (event->type() == QEvent::FileOpen)
     {
         QFileOpenEvent* fileEvent = static_cast<QFileOpenEvent*>(event);
@@ -308,7 +308,7 @@ void PaymentServer::initNetManager(const OptionsModel& options)
     if (netManager != NULL)
         delete netManager;
 
-    // netManager is used to fetch paymentrequests given in bitcoin: URI's
+    // netManager is used to fetch paymentrequests given in parabola: URI's
     netManager = new QNetworkAccessManager(this);
 
     // Use proxy settings from options:
@@ -349,7 +349,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
         return;
     }
 
-    if (s.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // bitcoin:
+    if (s.startsWith(PARABOLA_IPC_PREFIX, Qt::CaseInsensitive)) // parabola:
     {
 #if QT_VERSION >= 0x050000
         QUrlQuery url((QUrl(s)));
@@ -372,7 +372,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
         }
 
         SendCoinsRecipient recipient;
-        if (GUIUtil::parseBitcoinURI(s, &recipient))
+        if (GUIUtil::parseParabolaURI(s, &recipient))
             emit receivedPaymentRequest(recipient);
         return;
     }
@@ -441,7 +441,7 @@ PaymentServer::processPaymentRequest(PaymentRequestPlus& request,
         CTxOut txOut(sendingTo.second, sendingTo.first);
         if (txOut.IsDust(CTransaction::nMinRelayTxFee)) {
             QString message = QObject::tr("Requested payment amount (%1) too small")
-                .arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, sendingTo.second));
+                .arg(ParabolaUnits::formatWithUnit(ParabolaUnits::X^2, sendingTo.second));
             qDebug() << message;
             emit reportError(tr("Payment request error"), message, CClientUIInterface::MODAL);
             return false;
@@ -475,11 +475,11 @@ PaymentServer::processPaymentRequest(PaymentRequestPlus& request,
             if (ExtractDestination(sendingTo.first, dest)) {
                 if (i == 0) // Tie request to first pay-to, we don't want multiple ACKs
                     recipients[i].paymentRequest = request;
-                recipients[i].address = QString::fromStdString(CBitcoinAddress(dest).ToString());
+                recipients[i].address = QString::fromStdString(CParabolaAddress(dest).ToString());
                 if (fDebug) qDebug() << "PaymentRequest, insecure " << recipients[i].address;
             }
             else {
-                // Insecure payments to custom bitcoin addresses are not supported
+                // Insecure payments to custom parabola addresses are not supported
                 // (there is no good way to tell the user where they are paying in a way
                 // they'd have a chance of understanding).
                 emit reportError(tr("Payment request error"), 
@@ -513,7 +513,7 @@ PaymentServer::fetchPaymentACK(CWallet* wallet, SendCoinsRecipient recipient, QB
     QNetworkRequest netRequest;
     netRequest.setAttribute(QNetworkRequest::User, "PaymentACK");
     netRequest.setUrl(QString::fromStdString(details.payment_url()));
-    netRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/bitcoin-payment");
+    netRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/parabola-payment");
     netRequest.setRawHeader("User-Agent", CLIENT_NAME.c_str());
 
     payments::Payment payment;

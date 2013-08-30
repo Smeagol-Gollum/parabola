@@ -1,5 +1,5 @@
-#ifndef BITCOINGUI_H
-#define BITCOINGUI_H
+#ifndef PARABOLAGUI_H
+#define PARABOLAGUI_H
 
 #include <QMainWindow>
 #include <QSystemTrayIcon>
@@ -34,25 +34,25 @@ class QAction;
 QT_END_NAMESPACE
 
 /**
-  Bitcoin GUI main class. This class represents the main window of the Bitcoin UI. It communicates with both the client and
+  Parabola GUI main class. This class represents the main window of the Parabola UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.
 */
-class BitcoinGUI : public QMainWindow
+class ParabolaGUI : public QMainWindow
 {
     Q_OBJECT
 
 public:
     static const QString DEFAULT_WALLET;
 
-    explicit BitcoinGUI(bool fIsTestnet = false, QWidget *parent = 0);
-    ~BitcoinGUI();
+    explicit ParabolaGUI(bool fIsTestnet = false, QWidget *parent = 0);
+    ~ParabolaGUI();
 
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
     */
     void setClientModel(ClientModel *clientModel);
     /** Set the wallet model.
-        The wallet model represents a bitcoin wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a parabola wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
 
@@ -194,4 +194,4 @@ private slots:
     void detectShutdown();
 };
 
-#endif // BITCOINGUI_H
+#endif // PARABOLAGUI_H

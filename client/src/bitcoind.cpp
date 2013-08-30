@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Parabola developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "init.h"
-#include "bitcoinrpc.h"
+#include "parabolarpc.h"
 #include <boost/algorithm/string/predicate.hpp>
 
 void DetectShutdownThread(boost::thread_group* threadGroup)
@@ -35,7 +35,7 @@ bool AppInit(int argc, char* argv[])
         //
         // Parameters
         //
-        // If Qt is used, parameters/bitcoin.conf are parsed in qt/bitcoin.cpp's main()
+        // If Qt is used, parameters/parabola.conf are parsed in qt/parabola.cpp's main()
         ParseParameters(argc, argv);
         if (!boost::filesystem::is_directory(GetDataDir(false)))
         {
@@ -51,13 +51,13 @@ bool AppInit(int argc, char* argv[])
 
         if (mapArgs.count("-?") || mapArgs.count("--help"))
         {
-            // First part of help message is specific to bitcoind / RPC client
-            std::string strUsage = _("Bitcoin version") + " " + FormatFullVersion() + "\n\n" +
+            // First part of help message is specific to parabolad / RPC client
+            std::string strUsage = _("Parabola version") + " " + FormatFullVersion() + "\n\n" +
                 _("Usage:") + "\n" +
-                  "  bitcoind [options]                     " + "\n" +
-                  "  bitcoind [options] <command> [params]  " + _("Send command to -server or bitcoind") + "\n" +
-                  "  bitcoind [options] help                " + _("List commands") + "\n" +
-                  "  bitcoind [options] help <command>      " + _("Get help for a command") + "\n";
+                  "  parabolad [options]                     " + "\n" +
+                  "  parabolad [options] <command> [params]  " + _("Send command to -server or parabolad") + "\n" +
+                  "  parabolad [options] help                " + _("List commands") + "\n" +
+                  "  parabolad [options] help <command>      " + _("Get help for a command") + "\n";
 
             strUsage += "\n" + HelpMessage();
 
@@ -67,7 +67,7 @@ bool AppInit(int argc, char* argv[])
 
         // Command-line RPC
         for (int i = 1; i < argc; i++)
-            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "bitcoin:"))
+            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "parabola:"))
                 fCommandLine = true;
 
         if (fCommandLine)
@@ -130,7 +130,7 @@ int main(int argc, char* argv[])
     bool fRet = false;
     fHaveGUI = false;
 
-    // Connect bitcoind signal handlers
+    // Connect parabolad signal handlers
     noui_connect();
 
     fRet = AppInit(argc, argv);

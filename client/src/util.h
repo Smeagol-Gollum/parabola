@@ -1,9 +1,9 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Parabola developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef BITCOIN_UTIL_H
-#define BITCOIN_UTIL_H
+#ifndef PARABOLA_UTIL_H
+#define PARABOLA_UTIL_H
 
 #include "uint256.h"
 
@@ -557,7 +557,7 @@ inline uint32_t ByteReverse(uint32_t value)
 //    threadGroup.create_thread(boost::bind(&LoopForever<boost::function<void()> >, "nothing", f, milliseconds));
 template <typename Callable> void LoopForever(const char* name,  Callable func, int64 msecs)
 {
-    std::string s = strprintf("bitcoin-%s", name);
+    std::string s = strprintf("parabola-%s", name);
     RenameThread(s.c_str());
     printf("%s thread start\n", name);
     try
@@ -583,7 +583,7 @@ template <typename Callable> void LoopForever(const char* name,  Callable func, 
 // .. and a wrapper that just calls func once
 template <typename Callable> void TraceThread(const char* name,  Callable func)
 {
-    std::string s = strprintf("bitcoin-%s", name);
+    std::string s = strprintf("parabola-%s", name);
     RenameThread(s.c_str());
     try
     {
