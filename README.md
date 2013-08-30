@@ -1,4 +1,4 @@
-Parabola
+Parabola (X^2)
 ========
 Throwing a curveball to traditional currency
 --------
