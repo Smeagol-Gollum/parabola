@@ -1,26 +1,25 @@
-Bitcoin integration/staging tree
+Parabola Information
 ================================
 
-http://www.bitcoin.org
+http://insert-parabola-site.org
 
 Copyright (c) 2009-2013 Bitcoin Developers
+Copyright (c) 2013 Parabola Developers
 
-What is Bitcoin?
+
+What is Parabola?
 ----------------
 
-Bitcoin is an experimental new digital currency that enables instant payments to
-anyone, anywhere in the world. Bitcoin uses peer-to-peer technology to operate
-with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Bitcoin is also the name of the open source
-software which enables the use of this currency.
-
-For more information, as well as an immediately useable, binary version of
-the Bitcoin client software, see http://www.bitcoin.org.
+Parabola is an experimental digital currency that is based on the bitcoin
+peer-to-peer payment system.  With parabola, you are able to send transactions
+instantly over the internet, to anyone, anywhere in the world.  Like bitcoin,
+it is a decentralized currency, relying on the network to issue currency and
+manage transactions.  To download and for more information, visit http://insert-parabola-site.org
 
 License
 -------
 
-Bitcoin is released under the terms of the MIT license. See `COPYING` for more
+Parabola is released under the terms of the MIT license. See `COPYING` for more
 information or see http://opensource.org/licenses/MIT.
 
 Development process
@@ -29,7 +28,7 @@ Development process
 Developers work in their own trees, then submit pull requests when they think
 their feature or bug fix is ready.
 
-If it is a simple/trivial/non-controversial change, then one of the Bitcoin
+If it is a simple/trivial/non-controversial change, then one of the Parabola
 development team members simply pulls it.
 
 If it is a *more complicated or potentially controversial* change, then the patch
@@ -64,9 +63,9 @@ Unit tests for the core code are in `src/test/`. To compile and run them:
 
 Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
 
-    qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
+    qmake PARABOLA_QT_TEST=1 -o Makefile.test parabola-qt.pro
     make -f Makefile.test
-    ./bitcoin-qt_test
+    ./parabola-qt_test
 
 Every pull request is built for both Windows and Linux on a dedicated server,
 and unit and sanity tests are automatically run. The binaries produced may be
