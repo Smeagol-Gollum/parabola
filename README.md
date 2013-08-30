@@ -1,4 +1,6 @@
-parabola
+Parabola
 ========
+Throwing a curveball to traditional currency
+--------
 
-A git repo for the Parabola coin.
+See README.md in the client folder for information about the Qt-based client, and README.md in the miner folder for information about CPUMiner.

@@ -1,11 +1,11 @@
 /*
- * Qt4 bitcoin GUI.
+ * Qt4 parabola GUI.
  *
  * W.J. van der Laan 2011-2012
- * The Bitcoin Developers 2011-2012
+ * The Parabola Developers 2011-2012
  */
 
-#include "bitcoingui.h"
+#include "parabolagui.h"
 
 #include "transactiontablemodel.h"
 #include "optionsdialog.h"
@@ -15,7 +15,7 @@
 #include "walletframe.h"
 #include "optionsmodel.h"
 #include "transactiondescdialog.h"
-#include "bitcoinunits.h"
+#include "parabolaunits.h"
 #include "guiconstants.h"
 #include "notificator.h"
 #include "guiutil.h"
@@ -53,9 +53,9 @@
 
 #include <iostream>
 
-const QString BitcoinGUI::DEFAULT_WALLET = "~Default";
+const QString ParabolaGUI::DEFAULT_WALLET = "~Default";
 
-BitcoinGUI::BitcoinGUI(bool fIsTestnet, QWidget *parent) :
+ParabolaGUI::ParabolaGUI(bool fIsTestnet, QWidget *parent) :
     QMainWindow(parent),
     clientModel(0),
     encryptWalletAction(0),
@@ -71,24 +71,24 @@ BitcoinGUI::BitcoinGUI(bool fIsTestnet, QWidget *parent) :
 #ifndef Q_OS_MAC
     if (!fIsTestnet)
     {
-        setWindowTitle(tr("Bitcoin") + " - " + tr("Wallet"));
-        QApplication::setWindowIcon(QIcon(":icons/bitcoin"));
-        setWindowIcon(QIcon(":icons/bitcoin"));
+        setWindowTitle(tr("Parabola") + " - " + tr("Wallet"));
+        QApplication::setWindowIcon(QIcon(":icons/parabola"));
+        setWindowIcon(QIcon(":icons/parabola"));
     }
     else
     {
-        setWindowTitle(tr("Bitcoin") + " - " + tr("Wallet") + " " + tr("[testnet]"));
-        QApplication::setWindowIcon(QIcon(":icons/bitcoin_testnet"));
-        setWindowIcon(QIcon(":icons/bitcoin_testnet"));
+        setWindowTitle(tr("Parabola") + " - " + tr("Wallet") + " " + tr("[testnet]"));
+        QApplication::setWindowIcon(QIcon(":icons/parabola_testnet"));
+        setWindowIcon(QIcon(":icons/parabola_testnet"));
     }
 #else
     setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 
     if (!fIsTestnet)
-        MacDockIconHandler::instance()->setIcon(QIcon(":icons/bitcoin"));
+        MacDockIconHandler::instance()->setIcon(QIcon(":icons/parabola"));
     else
-        MacDockIconHandler::instance()->setIcon(QIcon(":icons/bitcoin_testnet"));
+        MacDockIconHandler::instance()->setIcon(QIcon(":icons/parabola_testnet"));
 #endif
 
     // Create wallet frame and make it the central widget
@@ -162,7 +162,7 @@ BitcoinGUI::BitcoinGUI(bool fIsTestnet, QWidget *parent) :
     this->installEventFilter(this);
 }
 
-BitcoinGUI::~BitcoinGUI()
+ParabolaGUI::~ParabolaGUI()
 {
     GUIUtil::saveWindowGeometry("nWindow", this);
     if(trayIcon) // Hide tray icon, as deleting will let it linger until quit (on Ubuntu)
@@ -173,7 +173,7 @@ BitcoinGUI::~BitcoinGUI()
 #endif
 }
 
-void BitcoinGUI::createActions(bool fIsTestnet)
+void ParabolaGUI::createActions(bool fIsTestnet)
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
@@ -185,7 +185,7 @@ void BitcoinGUI::createActions(bool fIsTestnet)
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a Bitcoin address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a Parabola address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
@@ -228,21 +228,21 @@ void BitcoinGUI::createActions(bool fIsTestnet)
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
     if (!fIsTestnet)
-        aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About Bitcoin"), this);
+        aboutAction = new QAction(QIcon(":/icons/parabola"), tr("&About Parabola"), this);
     else
-        aboutAction = new QAction(QIcon(":/icons/bitcoin_testnet"), tr("&About Bitcoin"), this);
-    aboutAction->setStatusTip(tr("Show information about Bitcoin"));
+        aboutAction = new QAction(QIcon(":/icons/parabola_testnet"), tr("&About Parabola"), this);
+    aboutAction->setStatusTip(tr("Show information about Parabola"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setStatusTip(tr("Modify configuration options for Bitcoin"));
+    optionsAction->setStatusTip(tr("Modify configuration options for Parabola"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     if (!fIsTestnet)
-        toggleHideAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Show / Hide"), this);
+        toggleHideAction = new QAction(QIcon(":/icons/parabola"), tr("&Show / Hide"), this);
     else
-        toggleHideAction = new QAction(QIcon(":/icons/bitcoin_testnet"), tr("&Show / Hide"), this);
+        toggleHideAction = new QAction(QIcon(":/icons/parabola_testnet"), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
 
     encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
@@ -253,9 +253,9 @@ void BitcoinGUI::createActions(bool fIsTestnet)
     changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
     changePassphraseAction->setStatusTip(tr("Change the passphrase used for wallet encryption"));
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your Bitcoin addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your Parabola addresses to prove you own them"));
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Bitcoin addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Parabola addresses"));
 
     openRPCConsoleAction = new QAction(QIcon(":/icons/debugwindow"), tr("&Debug window"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging and diagnostic console"));
@@ -272,7 +272,7 @@ void BitcoinGUI::createActions(bool fIsTestnet)
     connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(gotoVerifyMessageTab()));
 }
 
-void BitcoinGUI::createMenuBar()
+void ParabolaGUI::createMenuBar()
 {
 #ifdef Q_OS_MAC
     // Create a decoupled menu bar on Mac which stays even if the window is closed
@@ -303,7 +303,7 @@ void BitcoinGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
-void BitcoinGUI::createToolBars()
+void ParabolaGUI::createToolBars()
 {
     QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -314,7 +314,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(addressBookAction);
 }
 
-void BitcoinGUI::setClientModel(ClientModel *clientModel)
+void ParabolaGUI::setClientModel(ClientModel *clientModel)
 {
     this->clientModel = clientModel;
     if(clientModel)
@@ -338,34 +338,34 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
     }
 }
 
-bool BitcoinGUI::addWallet(const QString& name, WalletModel *walletModel)
+bool ParabolaGUI::addWallet(const QString& name, WalletModel *walletModel)
 {
     return walletFrame->addWallet(name, walletModel);
 }
 
-bool BitcoinGUI::setCurrentWallet(const QString& name)
+bool ParabolaGUI::setCurrentWallet(const QString& name)
 {
     return walletFrame->setCurrentWallet(name);
 }
 
-void BitcoinGUI::removeAllWallets()
+void ParabolaGUI::removeAllWallets()
 {
     walletFrame->removeAllWallets();
 }
 
-void BitcoinGUI::createTrayIcon(bool fIsTestnet)
+void ParabolaGUI::createTrayIcon(bool fIsTestnet)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
 
     if (!fIsTestnet)
     {
-        trayIcon->setToolTip(tr("Bitcoin client"));
+        trayIcon->setToolTip(tr("Parabola client"));
         trayIcon->setIcon(QIcon(":/icons/toolbar"));
     }
     else
     {
-        trayIcon->setToolTip(tr("Bitcoin client") + " " + tr("[testnet]"));
+        trayIcon->setToolTip(tr("Parabola client") + " " + tr("[testnet]"));
         trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
     }
 
@@ -375,7 +375,7 @@ void BitcoinGUI::createTrayIcon(bool fIsTestnet)
     notificator = new Notificator(QApplication::applicationName(), trayIcon);
 }
 
-void BitcoinGUI::createTrayIconMenu()
+void ParabolaGUI::createTrayIconMenu()
 {
     QMenu *trayIconMenu;
 #ifndef Q_OS_MAC
@@ -413,7 +413,7 @@ void BitcoinGUI::createTrayIconMenu()
 }
 
 #ifndef Q_OS_MAC
-void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void ParabolaGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
     {
@@ -423,7 +423,7 @@ void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 #endif
 
-void BitcoinGUI::optionsClicked()
+void ParabolaGUI::optionsClicked()
 {
     if(!clientModel || !clientModel->getOptionsModel())
         return;
@@ -432,49 +432,49 @@ void BitcoinGUI::optionsClicked()
     dlg.exec();
 }
 
-void BitcoinGUI::aboutClicked()
+void ParabolaGUI::aboutClicked()
 {
     AboutDialog dlg;
     dlg.setModel(clientModel);
     dlg.exec();
 }
 
-void BitcoinGUI::gotoOverviewPage()
+void ParabolaGUI::gotoOverviewPage()
 {
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
-void BitcoinGUI::gotoHistoryPage()
+void ParabolaGUI::gotoHistoryPage()
 {
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
-void BitcoinGUI::gotoAddressBookPage()
+void ParabolaGUI::gotoAddressBookPage()
 {
     if (walletFrame) walletFrame->gotoAddressBookPage();
 }
 
-void BitcoinGUI::gotoReceiveCoinsPage()
+void ParabolaGUI::gotoReceiveCoinsPage()
 {
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
 }
 
-void BitcoinGUI::gotoSendCoinsPage(QString addr)
+void ParabolaGUI::gotoSendCoinsPage(QString addr)
 {
     if (walletFrame) walletFrame->gotoSendCoinsPage(addr);
 }
 
-void BitcoinGUI::gotoSignMessageTab(QString addr)
+void ParabolaGUI::gotoSignMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoSignMessageTab(addr);
 }
 
-void BitcoinGUI::gotoVerifyMessageTab(QString addr)
+void ParabolaGUI::gotoVerifyMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
 }
 
-void BitcoinGUI::setNumConnections(int count)
+void ParabolaGUI::setNumConnections(int count)
 {
     QString icon;
     switch(count)
@@ -486,10 +486,10 @@ void BitcoinGUI::setNumConnections(int count)
     default: icon = ":/icons/connect_4"; break;
     }
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Bitcoin network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Parabola network", "", count));
 }
 
-void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
+void ParabolaGUI::setNumBlocks(int count, int nTotalBlocks)
 {
     // Prevent orphan statusbar messages (e.g. hover Quit in main menu, wait until chain-sync starts -> garbelled text)
     statusBar()->clearMessage();
@@ -583,9 +583,9 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     progressBar->setToolTip(tooltip);
 }
 
-void BitcoinGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
+void ParabolaGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("Bitcoin"); // default title
+    QString strTitle = tr("Parabola"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -634,7 +634,7 @@ void BitcoinGUI::message(const QString &title, const QString &message, unsigned 
         notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
 }
 
-void BitcoinGUI::changeEvent(QEvent *e)
+void ParabolaGUI::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
@@ -653,7 +653,7 @@ void BitcoinGUI::changeEvent(QEvent *e)
 #endif
 }
 
-void BitcoinGUI::closeEvent(QCloseEvent *event)
+void ParabolaGUI::closeEvent(QCloseEvent *event)
 {
     if(clientModel)
     {
@@ -668,18 +668,18 @@ void BitcoinGUI::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
-void BitcoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
+void ParabolaGUI::askFee(qint64 nFeeRequired, bool *payFee)
 {
     QString strMessage = tr("This transaction is over the size limit. You can still send it for a fee of %1, "
         "which goes to the nodes that process your transaction and helps to support the network. "
-        "Do you want to pay the fee?").arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, nFeeRequired));
+        "Do you want to pay the fee?").arg(ParabolaUnits::formatWithUnit(ParabolaUnits::X^2, nFeeRequired));
     QMessageBox::StandardButton retval = QMessageBox::question(
           this, tr("Confirm transaction fee"), strMessage,
           QMessageBox::Yes|QMessageBox::Cancel, QMessageBox::Yes);
     *payFee = (retval == QMessageBox::Yes);
 }
 
-void BitcoinGUI::incomingTransaction(const QString& date, int unit, qint64 amount, const QString& type, const QString& address)
+void ParabolaGUI::incomingTransaction(const QString& date, int unit, qint64 amount, const QString& type, const QString& address)
 {
     // On new transaction, make an info balloon
     message((amount)<0 ? tr("Sent transaction") : tr("Incoming transaction"),
@@ -688,19 +688,19 @@ void BitcoinGUI::incomingTransaction(const QString& date, int unit, qint64 amoun
                 "Type: %3\n"
                 "Address: %4\n")
                   .arg(date)
-                  .arg(BitcoinUnits::formatWithUnit(unit, amount, true))
+                  .arg(ParabolaUnits::formatWithUnit(unit, amount, true))
                   .arg(type)
                   .arg(address), CClientUIInterface::MSG_INFORMATION);
 }
 
-void BitcoinGUI::dragEnterEvent(QDragEnterEvent *event)
+void ParabolaGUI::dragEnterEvent(QDragEnterEvent *event)
 {
     // Accept only URIs
     if(event->mimeData()->hasUrls())
         event->acceptProposedAction();
 }
 
-void BitcoinGUI::dropEvent(QDropEvent *event)
+void ParabolaGUI::dropEvent(QDropEvent *event)
 {
     if(event->mimeData()->hasUrls())
     {
@@ -709,7 +709,7 @@ void BitcoinGUI::dropEvent(QDropEvent *event)
         foreach(const QUrl &uri, uris)
         {
             SendCoinsRecipient r;
-            if (GUIUtil::parseBitcoinURI(uri, &r) && walletFrame->handlePaymentRequest(r))
+            if (GUIUtil::parseParabolaURI(uri, &r) && walletFrame->handlePaymentRequest(r))
                 nValidUrisFound++;
         }
 
@@ -717,14 +717,14 @@ void BitcoinGUI::dropEvent(QDropEvent *event)
         if (nValidUrisFound)
             walletFrame->gotoSendCoinsPage();
         else
-            message(tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Bitcoin address or malformed URI parameters."),
+            message(tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Parabola address or malformed URI parameters."),
                       CClientUIInterface::ICON_WARNING);
     }
 
     event->acceptProposedAction();
 }
 
-bool BitcoinGUI::eventFilter(QObject *object, QEvent *event)
+bool ParabolaGUI::eventFilter(QObject *object, QEvent *event)
 {
     // Catch status tip events
     if (event->type() == QEvent::StatusTip)
@@ -736,12 +736,12 @@ bool BitcoinGUI::eventFilter(QObject *object, QEvent *event)
     return QMainWindow::eventFilter(object, event);
 }
 
-void BitcoinGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
+void ParabolaGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
 {
     walletFrame->handlePaymentRequest(recipient);
 }
 
-void BitcoinGUI::showPaymentACK(QString msg)
+void ParabolaGUI::showPaymentACK(QString msg)
 {
 #if QT_VERSION < 0x050000
     message(tr("Payment acknowledged"), Qt::escape(msg), CClientUIInterface::MODAL);
@@ -750,7 +750,7 @@ void BitcoinGUI::showPaymentACK(QString msg)
 #endif
 }
 
-void BitcoinGUI::setEncryptionStatus(int status)
+void ParabolaGUI::setEncryptionStatus(int status)
 {
     switch(status)
     {
@@ -779,7 +779,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
     }
 }
 
-void BitcoinGUI::showNormalIfMinimized(bool fToggleHidden)
+void ParabolaGUI::showNormalIfMinimized(bool fToggleHidden)
 {
     // activateWindow() (sometimes) helps with keyboard focus on Windows
     if (isHidden())
@@ -801,12 +801,12 @@ void BitcoinGUI::showNormalIfMinimized(bool fToggleHidden)
         hide();
 }
 
-void BitcoinGUI::toggleHidden()
+void ParabolaGUI::toggleHidden()
 {
     showNormalIfMinimized(true);
 }
 
-void BitcoinGUI::detectShutdown()
+void ParabolaGUI::detectShutdown()
 {
     if (ShutdownRequested())
         QMetaObject::invokeMethod(QCoreApplication::instance(), "quit", Qt::QueuedConnection);

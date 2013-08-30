@@ -1,5 +1,5 @@
 ---
-name: "bitcoin"
+name: "parabola"
 suites:
 - "lucid"
 architectures:
@@ -20,8 +20,8 @@ packages:
 - "libpng12-dev"
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/bitcoin/bitcoin.git"
-  "dir": "bitcoin"
+- "url": "https://github.com/parabola/parabola.git"
+  "dir": "parabola"
 files:
 - "miniupnpc-1.6.tar.gz"
 - "qrencode-3.2.0.tar.bz2"
@@ -47,7 +47,7 @@ script: |
   make $MAKEOPTS install
   cd ..
   #
-  cd bitcoin
+  cd parabola
   mkdir -p $OUTDIR/src
   git archive HEAD | tar -x -C $OUTDIR/src
   cp $OUTDIR/src/doc/README.md $OUTDIR
@@ -55,7 +55,7 @@ script: |
   mkdir -p $OUTDIR/bin/$GBUILD_BITS
   qmake INCLUDEPATH="$INSTDIR/include" LIBS="-L$INSTDIR/lib" PROTOC="$INSTDIR/bin/protoc" PROTOBUF_LIB_PATH="$INSTDIR/lib" PROTOBUF_INCLUDE_PATH="$INSTDIR/include" RELEASE=1 USE_QRCODE=1
   make $MAKEOPTS
-  install bitcoin-qt $OUTDIR/bin/$GBUILD_BITS
+  install parabola-qt $OUTDIR/bin/$GBUILD_BITS
   cd src
-  make -f makefile.unix STATIC=1 OPENSSL_INCLUDE_PATH="$INSTDIR/include" OPENSSL_LIB_PATH="$INSTDIR/lib" $MAKEOPTS bitcoind USE_UPNP=0 DEBUGFLAGS=
-  install -s bitcoind $OUTDIR/bin/$GBUILD_BITS
+  make -f makefile.unix STATIC=1 OPENSSL_INCLUDE_PATH="$INSTDIR/include" OPENSSL_LIB_PATH="$INSTDIR/lib" $MAKEOPTS parabolad USE_UPNP=0 DEBUGFLAGS=
+  install -s parabolad $OUTDIR/bin/$GBUILD_BITS

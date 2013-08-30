@@ -29,7 +29,7 @@ public:
     QString authenticatedMerchant; // Empty if no authentication or invalid signature/cert/etc.
 };
 
-/** Interface to Bitcoin wallet from Qt view code. */
+/** Interface to Parabola wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT

@@ -1,5 +1,5 @@
-#ifndef BITCOINAMOUNTFIELD_H
-#define BITCOINAMOUNTFIELD_H
+#ifndef PARABOLAAMOUNTFIELD_H
+#define PARABOLAAMOUNTFIELD_H
 
 #include <QWidget>
 
@@ -8,16 +8,16 @@ class QDoubleSpinBox;
 class QValueComboBox;
 QT_END_NAMESPACE
 
-/** Widget for entering bitcoin amounts.
+/** Widget for entering parabola amounts.
   */
-class BitcoinAmountField: public QWidget
+class ParabolaAmountField: public QWidget
 {
     Q_OBJECT
 
     Q_PROPERTY(qint64 value READ value WRITE setValue NOTIFY textChanged USER true)
 
 public:
-    explicit BitcoinAmountField(QWidget *parent = 0);
+    explicit ParabolaAmountField(QWidget *parent = 0);
 
     qint64 value(bool *valid=0) const;
     void setValue(qint64 value);
@@ -61,4 +61,4 @@ private slots:
 
 };
 
-#endif // BITCOINAMOUNTFIELD_H
+#endif // PARABOLAAMOUNTFIELD_H

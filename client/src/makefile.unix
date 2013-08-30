@@ -121,14 +121,14 @@ OBJS= \
     obj/key.o \
     obj/db.o \
     obj/init.o \
-    obj/bitcoind.o \
+    obj/parabolad.o \
     obj/keystore.o \
     obj/core.o \
     obj/main.o \
     obj/miner.o \
     obj/net.o \
     obj/protocol.o \
-    obj/bitcoinrpc.o \
+    obj/parabolarpc.o \
     obj/rpcdump.o \
     obj/rpcnet.o \
     obj/rpcmining.o \
@@ -148,10 +148,10 @@ OBJS= \
     obj/chainparams.o
 
 
-all: bitcoind
+all: parabolad
 
-test check: test_bitcoin FORCE
-	./test_bitcoin
+test check: test_parabola FORCE
+	./test_parabola
 
 #
 # LevelDB support
@@ -179,7 +179,7 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-bitcoind: $(OBJS:obj/%=obj/%)
+parabolad: $(OBJS:obj/%=obj/%)
 	$(LINK) $(xCXXFLAGS) -o $@ $^ $(xLDFLAGS) $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -191,11 +191,11 @@ obj-test/%.o: test/%.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-test_bitcoin: $(TESTOBJS) $(filter-out obj/init.o obj/bitcoind.o,$(OBJS:obj/%=obj/%))
+test_parabola: $(TESTOBJS) $(filter-out obj/init.o obj/parabolad.o,$(OBJS:obj/%=obj/%))
 	$(LINK) $(xCXXFLAGS) -o $@ $(LIBPATHS) $^ $(TESTLIBS) $(xLDFLAGS) $(LIBS)
 
 clean:
-	-rm -f bitcoind test_bitcoin
+	-rm -f parabolad test_parabola
 	-rm -f obj/*.o
 	-rm -f obj-test/*.o
 	-rm -f obj/*.P

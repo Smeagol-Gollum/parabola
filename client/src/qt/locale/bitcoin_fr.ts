@@ -3,13 +3,13 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About Bitcoin</source>
-        <translation>À propos de Bitcoin</translation>
+        <source>About Parabola</source>
+        <translation>À propos de Parabola</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;Bitcoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Bitcoin&lt;/b&gt; version</translation>
+        <source>&lt;b&gt;Parabola&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Parabola&lt;/b&gt; version</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -33,8 +33,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+0"/>
-        <source>The Bitcoin developers</source>
-        <translation>Les développeurs Bitcoin</translation>
+        <source>The Parabola developers</source>
+        <translation>Les développeurs Parabola</translation>
     </message>
 </context>
 <context>
@@ -66,8 +66,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
-        <source>These are your Bitcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Voici vos adresses Bitcoin qui vous permettent de recevoir des paiements. Vous pouvez donner une adresse différente à chaque expéditeur afin de savoir qui vous paye.</translation>
+        <source>These are your Parabola addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Voici vos adresses Parabola qui vous permettent de recevoir des paiements. Vous pouvez donner une adresse différente à chaque expéditeur afin de savoir qui vous paye.</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -81,8 +81,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a Bitcoin address</source>
-        <translation>Signer un message pour prouver que vous détenez une adresse Bitcoin</translation>
+        <source>Sign a message to prove you own a Parabola address</source>
+        <translation>Signer un message pour prouver que vous détenez une adresse Parabola</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -106,8 +106,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-44"/>
-        <source>Verify a message to ensure it was signed with a specified Bitcoin address</source>
-        <translation>Vérifier un message pour vous assurer qu&apos;il a bien été signé avec l&apos;adresse Bitcoin spécifiée</translation>
+        <source>Verify a message to ensure it was signed with a specified Parabola address</source>
+        <translation>Vérifier un message pour vous assurer qu&apos;il a bien été signé avec l&apos;adresse Parabola spécifiée</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -121,8 +121,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="-5"/>
-        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Ce sont vos adresses Bitcoin pour émettre des paiements. Vérifiez toujours le montant et l&apos;adresse du destinataire avant d&apos;envoyer des pièces.</translation>
+        <source>These are your Parabola addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Ce sont vos adresses Parabola pour émettre des paiements. Vérifiez toujours le montant et l&apos;adresse du destinataire avant d&apos;envoyer des pièces.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -247,8 +247,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITCOINS&lt;/b&gt;!</source>
-        <translation>Attention : Si vous chiffrez votre porte-monnaie et perdez votre phrase de passe, vous &lt;b&gt;PERDREZ ACCÈS À TOUS VOS BITCOINS&lt;/b&gt; !</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PARABOLAS&lt;/b&gt;!</source>
+        <translation>Attention : Si vous chiffrez votre porte-monnaie et perdez votre phrase de passe, vous &lt;b&gt;PERDREZ ACCÈS À TOUS VOS PARABOLAS&lt;/b&gt; !</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -274,8 +274,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-56"/>
-        <source>Bitcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
-        <translation>Bitcoin va à présent se fermer pour terminer la procédure de cryptage. N&apos;oubliez pas que le chiffrement de votre porte-monnaie ne peut pas fournir une protection totale contre le vol par des logiciels malveillants qui infecteraient votre ordinateur.</translation>
+        <source>Parabola will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your parabolas from being stolen by malware infecting your computer.</source>
+        <translation>Parabola va à présent se fermer pour terminer la procédure de cryptage. N&apos;oubliez pas que le chiffrement de votre porte-monnaie ne peut pas fournir une protection totale contre le vol par des logiciels malveillants qui infecteraient votre ordinateur.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -320,9 +320,9 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>ParabolaGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="+254"/>
+        <location filename="../parabolagui.cpp" line="+254"/>
         <source>Sign &amp;message...</source>
         <translation>Signer un &amp;message...</translation>
     </message>
@@ -373,8 +373,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+7"/>
-        <source>Show information about Bitcoin</source>
-        <translation>Afficher des informations à propos de Bitcoin</translation>
+        <source>Show information about Parabola</source>
+        <translation>Afficher des informations à propos de Parabola</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -418,13 +418,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-319"/>
-        <source>Send coins to a Bitcoin address</source>
-        <translation>Envoyer des pièces à une adresse Bitcoin</translation>
+        <source>Send coins to a Parabola address</source>
+        <translation>Envoyer des pièces à une adresse Parabola</translation>
     </message>
     <message>
         <location line="+52"/>
-        <source>Modify configuration options for Bitcoin</source>
-        <translation>Modifier les options de configuration de Bitcoin</translation>
+        <source>Modify configuration options for Parabola</source>
+        <translation>Modifier les options de configuration de Parabola</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -455,8 +455,8 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="-183"/>
         <location line="+6"/>
         <location line="+508"/>
-        <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <source>Parabola</source>
+        <translation>Parabola</translation>
     </message>
     <message>
         <location line="-514"/>
@@ -482,8 +482,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+23"/>
         <location line="+2"/>
-        <source>&amp;About Bitcoin</source>
-        <translation>À &amp;propos de Bitcoin</translation>
+        <source>&amp;About Parabola</source>
+        <translation>À &amp;propos de Parabola</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -503,13 +503,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+7"/>
-        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
-        <translation>Signer les messages avec vos adresses Bitcoin pour prouver que vous les détenez</translation>
+        <source>Sign messages with your Parabola addresses to prove you own them</source>
+        <translation>Signer les messages avec vos adresses Parabola pour prouver que vous les détenez</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
-        <translation>Vérifier les messages pour vous assurer qu&apos;ils ont bien été signés avec les adresses Bitcoin spécifiées</translation>
+        <source>Verify messages to ensure they were signed with specified Parabola addresses</source>
+        <translation>Vérifier les messages pour vous assurer qu&apos;ils ont bien été signés avec les adresses Parabola spécifiées</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -540,13 +540,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-5"/>
         <location line="+5"/>
-        <source>Bitcoin client</source>
-        <translation>Client Bitcoin</translation>
+        <source>Parabola client</source>
+        <translation>Client Parabola</translation>
     </message>
     <message numerus="yes">
         <location line="+121"/>
-        <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n connexion active avec le réseau Bitcoin</numerusform><numerusform>%n connexions actives avec le réseau Bitcoin</numerusform></translation>
+        <source>%n active connection(s) to Parabola network</source>
+        <translation><numerusform>%n connexion active avec le réseau Parabola</numerusform><numerusform>%n connexions actives avec le réseau Parabola</numerusform></translation>
     </message>
     <message>
         <location line="+22"/>
@@ -660,8 +660,8 @@ Adresse : %4
     <message>
         <location line="-23"/>
         <location line="+23"/>
-        <source>URI can not be parsed! This can be caused by an invalid Bitcoin address or malformed URI parameters.</source>
-        <translation>L&apos;URI ne peut être analysé ! Cela peut être causé par une adresse Bitcoin invalide ou par des paramètres d&apos;URI malformés.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Parabola address or malformed URI parameters.</source>
+        <translation>L&apos;URI ne peut être analysé ! Cela peut être causé par une adresse Parabola invalide ou par des paramètres d&apos;URI malformés.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -674,9 +674,9 @@ Adresse : %4
         <translation>Le porte-monnaie est &lt;b&gt;chiffré&lt;/b&gt; et est actuellement &lt;b&gt;verrouillé&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+110"/>
-        <source>A fatal error occurred. Bitcoin can no longer continue safely and will quit.</source>
-        <translation>Une erreur fatale est survenue. Bitcoin ne peut plus continuer à fonctionner de façon sûre et va s&apos;arrêter.</translation>
+        <location filename="../parabola.cpp" line="+110"/>
+        <source>A fatal error occurred. Parabola can no longer continue safely and will quit.</source>
+        <translation>Une erreur fatale est survenue. Parabola ne peut plus continuer à fonctionner de façon sûre et va s&apos;arrêter.</translation>
     </message>
 </context>
 <context>
@@ -741,8 +741,8 @@ Adresse : %4
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
-        <translation>L&apos;adresse fournie « %1 » n&apos;est pas une adresse Bitcoin valide.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Parabola address.</source>
+        <translation>L&apos;adresse fournie « %1 » n&apos;est pas une adresse Parabola valide.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -788,8 +788,8 @@ Adresse : %4
     <message>
         <location filename="../guiutil.cpp" line="+517"/>
         <location line="+13"/>
-        <source>Bitcoin-Qt</source>
-        <translation>Bitcoin-Qt</translation>
+        <source>Parabola-Qt</source>
+        <translation>Parabola-Qt</translation>
     </message>
     <message>
         <location line="-13"/>
@@ -841,18 +841,18 @@ Adresse : %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Welcome to Bitcoin-Qt.</source>
-        <translation>Bienvenue sur Bitcoin-Qt.</translation>
+        <source>Welcome to Parabola-Qt.</source>
+        <translation>Bienvenue sur Parabola-Qt.</translation>
     </message>
     <message>
         <location line="+26"/>
-        <source>As this is the first time the program is launched, you can choose where Bitcoin-Qt will store its data.</source>
-        <translation>Comme c&apos;est la première fois que le logiciel est lancé, vous pouvez choisir où Bitcoin-Qt stockera ses données.</translation>
+        <source>As this is the first time the program is launched, you can choose where Parabola-Qt will store its data.</source>
+        <translation>Comme c&apos;est la première fois que le logiciel est lancé, vous pouvez choisir où Parabola-Qt stockera ses données.</translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>Bitcoin-Qt will download and store a copy of the Bitcoin block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Bitcoin-Qt va télécharger et stocker une copie de la chaîne des blocs de Bitcoin. Au moins %1Go de données seront stockées dans ce répertoire et sa taille augmentera avec le temps. Le porte-monnaie sera également stocké dans ce répertoire.</translation>
+        <source>Parabola-Qt will download and store a copy of the Parabola block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Parabola-Qt va télécharger et stocker une copie de la chaîne des blocs de Parabola. Au moins %1Go de données seront stockées dans ce répertoire et sa taille augmentera avec le temps. Le porte-monnaie sera également stocké dans ce répertoire.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -904,13 +904,13 @@ Adresse : %4
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start Bitcoin after logging in to the system.</source>
-        <translation>Démarrer Bitcoin automatiquement après avoir ouvert une session sur l&apos;ordinateur</translation>
+        <source>Automatically start Parabola after logging in to the system.</source>
+        <translation>Démarrer Parabola automatiquement après avoir ouvert une session sur l&apos;ordinateur</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start Bitcoin on system login</source>
-        <translation>&amp;Démarrer Bitcoin lors de l&apos;ouverture d&apos;une session</translation>
+        <source>&amp;Start Parabola on system login</source>
+        <translation>&amp;Démarrer Parabola lors de l&apos;ouverture d&apos;une session</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -929,8 +929,8 @@ Adresse : %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Ouvrir le port du client Bitcoin automatiquement sur le routeur. Cela ne fonctionne que si votre routeur supporte l&apos;UPnP et si la fonctionnalité est activée.</translation>
+        <source>Automatically open the Parabola client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Ouvrir le port du client Parabola automatiquement sur le routeur. Cela ne fonctionne que si votre routeur supporte l&apos;UPnP et si la fonctionnalité est activée.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -939,8 +939,8 @@ Adresse : %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the Bitcoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Connexion au réseau Bitcoin à travers un proxy SOCKS (par ex. lors d&apos;une connexion via Tor).</translation>
+        <source>Connect to the Parabola network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Connexion au réseau Parabola à travers un proxy SOCKS (par ex. lors d&apos;une connexion via Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1014,8 +1014,8 @@ Adresse : %4
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Bitcoin.</source>
-        <translation>La langue de l&apos;interface utilisateur peut être définie ici. Ce réglage sera pris en compte après redémarrage de Bitcoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Parabola.</source>
+        <translation>La langue de l&apos;interface utilisateur peut être définie ici. Ce réglage sera pris en compte après redémarrage de Parabola.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1029,8 +1029,8 @@ Adresse : %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show Bitcoin addresses in the transaction list or not.</source>
-        <translation>Détermine si les adresses Bitcoin seront affichées sur la liste des transactions.</translation>
+        <source>Whether to show Parabola addresses in the transaction list or not.</source>
+        <translation>Détermine si les adresses Parabola seront affichées sur la liste des transactions.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1081,8 +1081,8 @@ Adresse : %4
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting Bitcoin.</source>
-        <translation>Ce réglage sera pris en compte après un redémarrage de Bitcoin.</translation>
+        <source>This setting will take effect after restarting Parabola.</source>
+        <translation>Ce réglage sera pris en compte après un redémarrage de Parabola.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1100,8 +1100,8 @@ Adresse : %4
     <message>
         <location line="+50"/>
         <location line="+202"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Les informations affichées peuvent être obsolètes. Votre porte-monnaie est automatiquement synchronisé avec le réseau Bitcoin lorsque la connexion s&apos;établit, or ce processus n&apos;est pas encore terminé.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Parabola network after a connection is established, but this process has not completed yet.</source>
+        <translation>Les informations affichées peuvent être obsolètes. Votre porte-monnaie est automatiquement synchronisé avec le réseau Parabola lorsque la connexion s&apos;établit, or ce processus n&apos;est pas encore terminé.</translation>
     </message>
     <message>
         <location line="-131"/>
@@ -1164,17 +1164,17 @@ Adresse : %4
     <name>PaymentServer</name>
     <message>
         <location filename="../paymentserver.cpp" line="+108"/>
-        <source>Cannot start bitcoin: click-to-pay handler</source>
-        <translation>Impossible de démarrer bitcoin : gestionnaire de cliquer-pour-payer</translation>
+        <source>Cannot start parabola: click-to-pay handler</source>
+        <translation>Impossible de démarrer parabola : gestionnaire de cliquer-pour-payer</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../bitcoin.cpp" line="+92"/>
+        <location filename="../parabola.cpp" line="+92"/>
         <location filename="../intro.cpp" line="-32"/>
-        <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <source>Parabola</source>
+        <translation>Parabola</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1333,8 +1333,8 @@ Adresse : %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Bitcoin-Qt help message to get a list with possible Bitcoin command-line options.</source>
-        <translation>Afficher le message d&apos;aide de Bitcoin-Qt pour obtenir la liste des options de ligne de commande disponibles pour Bitcoin.</translation>
+        <source>Show the Parabola-Qt help message to get a list with possible Parabola command-line options.</source>
+        <translation>Afficher le message d&apos;aide de Parabola-Qt pour obtenir la liste des options de ligne de commande disponibles pour Parabola.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1353,13 +1353,13 @@ Adresse : %4
     </message>
     <message>
         <location line="-104"/>
-        <source>Bitcoin - Debug window</source>
-        <translation>Bitcoin - Fenêtre de débogage</translation>
+        <source>Parabola - Debug window</source>
+        <translation>Parabola - Fenêtre de débogage</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>Bitcoin Core</source>
-        <translation>Noyau Bitcoin</translation>
+        <source>Parabola Core</source>
+        <translation>Noyau Parabola</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1368,8 +1368,8 @@ Adresse : %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the Bitcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Ouvrir le journal de débogage de Bitcoin depuis le répertoire de données actuel. Cela peut prendre quelques secondes pour les journaux de grande taille.</translation>
+        <source>Open the Parabola debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Ouvrir le journal de débogage de Parabola depuis le répertoire de données actuel. Cela peut prendre quelques secondes pour les journaux de grande taille.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1378,8 +1378,8 @@ Adresse : %4
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-30"/>
-        <source>Welcome to the Bitcoin RPC console.</source>
-        <translation>Bienvenue sur la console RPC de Bitcoin.</translation>
+        <source>Welcome to the Parabola RPC console.</source>
+        <translation>Bienvenue sur la console RPC de Parabola.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1433,8 +1433,8 @@ Adresse : %4
     </message>
     <message>
         <location line="+10"/>
-        <source>123.456 BTC</source>
-        <translation>123.456 BTC</translation>
+        <source>123.456 X^2</source>
+        <translation>123.456 X^2</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -1563,8 +1563,8 @@ Adresse : %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Bitcoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>Entrez une adresse Bitcoin (par ex. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <source>Enter a Parabola address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Entrez une adresse Parabola (par ex. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
 </context>
 <context>
@@ -1628,8 +1628,8 @@ Adresse : %4
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Bitcoin address</source>
-        <translation>Signer le message pour prouver que vous détenez cette adresse Bitcoin</translation>
+        <source>Sign the message to prove you own this Parabola address</source>
+        <translation>Signer le message pour prouver que vous détenez cette adresse Parabola</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1664,8 +1664,8 @@ Adresse : %4
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified Bitcoin address</source>
-        <translation>Vérifier le message pour vous assurer qu&apos;il a bien été signé par l&apos;adresse Bitcoin spécifiée</translation>
+        <source>Verify the message to ensure it was signed with the specified Parabola address</source>
+        <translation>Vérifier le message pour vous assurer qu&apos;il a bien été signé par l&apos;adresse Parabola spécifiée</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1680,8 +1680,8 @@ Adresse : %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Bitcoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>Entrez une adresse Bitcoin (par ex. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <source>Enter a Parabola address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Entrez une adresse Parabola (par ex. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1690,8 +1690,8 @@ Adresse : %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter Bitcoin signature</source>
-        <translation>Entrer une signature Bitcoin</translation>
+        <source>Enter Parabola signature</source>
+        <translation>Entrer une signature Parabola</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -1764,8 +1764,8 @@ Adresse : %4
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+22"/>
-        <source>The Bitcoin developers</source>
-        <translation>Les développeurs Bitcoin</translation>
+        <source>The Parabola developers</source>
+        <translation>Les développeurs Parabola</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2299,11 +2299,11 @@ Adresse : %4
     </message>
 </context>
 <context>
-    <name>bitcoin-core</name>
+    <name>parabola-core</name>
     <message>
-        <location filename="../bitcoinstrings.cpp" line="+98"/>
-        <source>Bitcoin version</source>
-        <translation>Version de Bitcoin</translation>
+        <location filename="../parabolastrings.cpp" line="+98"/>
+        <source>Parabola version</source>
+        <translation>Version de Parabola</translation>
     </message>
     <message>
         <location line="+104"/>
@@ -2312,8 +2312,8 @@ Adresse : %4
     </message>
     <message>
         <location line="-30"/>
-        <source>Send command to -server or bitcoind</source>
-        <translation>Envoyer une commande à -server ou à bitcoind</translation>
+        <source>Send command to -server or parabolad</source>
+        <translation>Envoyer une commande à -server ou à parabolad</translation>
     </message>
     <message>
         <location line="-23"/>
@@ -2332,13 +2332,13 @@ Adresse : %4
     </message>
     <message>
         <location line="+24"/>
-        <source>Specify configuration file (default: bitcoin.conf)</source>
-        <translation>Spécifier le fichier de configuration (par défaut : bitcoin.conf)</translation>
+        <source>Specify configuration file (default: parabola.conf)</source>
+        <translation>Spécifier le fichier de configuration (par défaut : parabola.conf)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: bitcoind.pid)</source>
-        <translation>Spécifier le fichier PID (par défaut : bitcoind.pid)</translation>
+        <source>Specify pid file (default: parabolad.pid)</source>
+        <translation>Spécifier le fichier PID (par défaut : parabolad.pid)</translation>
     </message>
     <message>
         <location line="-1"/>
@@ -2415,24 +2415,24 @@ Adresse : %4
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=bitcoinrpc
+rpcuser=parabolarpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Bitcoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Parabola Alert&quot; admin@foo.com
 </source>
         <translation>%s, vous devez définir un mot de passe rpc dans le fichier de configuration : 
 %s
 Il vous est conseillé d&apos;utiliser le mot de passe aléatoire suivant :
-rpcuser=bitcoinrpc
+rpcuser=parabolarpc
 rpcpassword=%s
 (vous n&apos;avez pas besoin de retenir ce mot de passe)
 Le nom d&apos;utilisateur et le mot de passe NE DOIVENT PAS être identiques.
 Si le fichier n&apos;existe pas, créez-le avec les droits de lecture accordés au propriétaire.
 Il est aussi conseillé de régler alertnotify pour être prévenu des problèmes ;
-par exemple : alertnotify=echo %%s | mail -s &quot;Bitcoin Alert&quot; admin@foo.com
+par exemple : alertnotify=echo %%s | mail -s &quot;Parabola Alert&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -2447,8 +2447,8 @@ par exemple : alertnotify=echo %%s | mail -s &quot;Bitcoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+3"/>
-        <source>Cannot obtain a lock on data directory %s. Bitcoin is probably already running.</source>
-        <translation>Impossible d’obtenir un verrou sur le répertoire de données %s. Bitcoin fonctionne probablement déjà.</translation>
+        <source>Cannot obtain a lock on data directory %s. Parabola is probably already running.</source>
+        <translation>Impossible d’obtenir un verrou sur le répertoire de données %s. Parabola fonctionne probablement déjà.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2497,8 +2497,8 @@ par exemple : alertnotify=echo %%s | mail -s &quot;Bitcoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Bitcoin will not work properly.</source>
-        <translation>Attention : veuillez vérifier que l&apos;heure et la date de votre ordinateur sont correctes ! Si votre horloge n&apos;est pas à l&apos;heure, Bitcoin ne fonctionnera pas correctement.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Parabola will not work properly.</source>
+        <translation>Attention : veuillez vérifier que l&apos;heure et la date de votre ordinateur sont correctes ! Si votre horloge n&apos;est pas à l&apos;heure, Parabola ne fonctionnera pas correctement.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2767,8 +2767,8 @@ par exemple : alertnotify=echo %%s | mail -s &quot;Bitcoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+5"/>
-        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>Options SSL : (cf. le wiki de Bitcoin pour les instructions de configuration du SSL)</translation>
+        <source>SSL options: (see the Parabola Wiki for SSL setup instructions)</source>
+        <translation>Options SSL : (cf. le wiki de Parabola pour les instructions de configuration du SSL)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2952,13 +2952,13 @@ par exemple : alertnotify=echo %%s | mail -s &quot;Bitcoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Bitcoin</source>
-        <translation>Erreur lors du chargement de wallet.dat : le porte-monnaie nécessite une version plus récente de Bitcoin</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Parabola</source>
+        <translation>Erreur lors du chargement de wallet.dat : le porte-monnaie nécessite une version plus récente de Parabola</translation>
     </message>
     <message>
         <location line="+96"/>
-        <source>Wallet needed to be rewritten: restart Bitcoin to complete</source>
-        <translation>Le porte-monnaie nécessitait une réécriture : veuillez redémarrer Bitcoin pour terminer l&apos;opération</translation>
+        <source>Wallet needed to be rewritten: restart Parabola to complete</source>
+        <translation>Le porte-monnaie nécessitait une réécriture : veuillez redémarrer Parabola pour terminer l&apos;opération</translation>
     </message>
     <message>
         <location line="-98"/>
@@ -3017,8 +3017,8 @@ par exemple : alertnotify=echo %%s | mail -s &quot;Bitcoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="-25"/>
-        <source>Unable to bind to %s on this computer. Bitcoin is probably already running.</source>
-        <translation>Impossible de se lier à %s sur cet ordinateur. Bitcoin fonctionne probablement déjà.</translation>
+        <source>Unable to bind to %s on this computer. Parabola is probably already running.</source>
+        <translation>Impossible de se lier à %s sur cet ordinateur. Parabola fonctionne probablement déjà.</translation>
     </message>
     <message>
         <location line="+64"/>

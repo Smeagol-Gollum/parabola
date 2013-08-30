@@ -1,6 +1,6 @@
-Bitcoin-Qt Readme
+Parabola-Qt Readme
 ===============================
-Contains build and configuration instructions for Bitcoin-Qt (Qt4 GUI for Bitcoin).
+Contains build and configuration instructions for Parabola-Qt (Qt4 GUI for Parabola).
 
 Build Instructions
 ---------------------
@@ -36,8 +36,8 @@ then execute the following:
     qmake
     make
 
-Alternatively, install [Qt Creator](http://qt-project.org/downloads/) and open the `bitcoin-qt.pro` file. 
-An executable named `bitcoin-qt` will be built.
+Alternatively, install [Qt Creator](http://qt-project.org/downloads/) and open the `parabola-qt.pro` file. 
+An executable named `parabola-qt` will be built.
 
 
 
@@ -55,11 +55,11 @@ An executable named `bitcoin-qt` will be built.
 		brew update
 		brew install boost miniupnpc openssl berkeley-db4 protobuf
 
-- If using HomeBrew,  edit `bitcoin-qt.pro` to account for library location differences. There's a diff in `contrib/homebrew/bitcoin-qt-pro.patch` that shows what you need to change, or you can just patch by doing
+- If using HomeBrew,  edit `parabola-qt.pro` to account for library location differences. There's a diff in `contrib/homebrew/parabola-qt-pro.patch` that shows what you need to change, or you can just patch by doing
 
-        patch -p1 < contrib/homebrew/bitcoin.qt.pro.patch
+        patch -p1 < contrib/homebrew/parabola.qt.pro.patch
 
-- Open the bitcoin-qt.pro file in Qt Creator and build as normal (cmd+B)
+- Open the parabola-qt.pro file in Qt Creator and build as normal (cmd+B)
 
 
 Build Configuration Options
@@ -67,7 +67,7 @@ Build Configuration Options
 
 ### UPnP port forwarding
 
-To use UPnP for port forwarding behind a NAT router (recommended, as more connections overall allow for a faster and more stable bitcoin experience), pass the following argument to qmake:
+To use UPnP for port forwarding behind a NAT router (recommended, as more connections overall allow for a faster and more stable parabola experience), pass the following argument to qmake:
 
 
 
@@ -108,9 +108,9 @@ Warnings
 ### Berkely DB Version Warning
 
 
-A warning for people using the *static binary* version of Bitcoin on a Linux/UNIX-ish system (tl;dr: **Berkely DB databases are not forward compatible**).
+A warning for people using the *static binary* version of Parabola on a Linux/UNIX-ish system (tl;dr: **Berkely DB databases are not forward compatible**).
 
-The static binary version of Bitcoin is linked against libdb4.8 (see also [this Debian issue](http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=621425)).
+The static binary version of Parabola is linked against libdb4.8 (see also [this Debian issue](http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=621425)).
 
 Now the nasty thing is that databases from 5.X are not compatible with 4.X.
 
@@ -119,7 +119,7 @@ If the globally installed development package of Berkely DB installed on your sy
 ###  Ubuntu 11.10 Warning
 
 
-Ubuntu 11.10 has a package called 'qt-at-spi' installed by default.  At the time of writing, having that package installed causes bitcoin-qt to crash intermittently.  The issue has been reported as [launchpad bug 857790](https://bugs.launchpad.net/ubuntu/+source/qt-at-spi/+bug/857790), but
+Ubuntu 11.10 has a package called 'qt-at-spi' installed by default.  At the time of writing, having that package installed causes parabola-qt to crash intermittently.  The issue has been reported as [launchpad bug 857790](https://bugs.launchpad.net/ubuntu/+source/qt-at-spi/+bug/857790), but
 isn't yet fixed.
 
 Until the bug is fixed, you can remove the qt-at-spi package to work around the problem, though this will presumably disable screen reader functionality for Qt apps:

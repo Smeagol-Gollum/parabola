@@ -1,7 +1,7 @@
 WINDOWS BUILD NOTES
 ===================
 
-See [readme-qt.md](readme-qt.md) for instructions on building Bitcoin-Qt, the
+See [readme-qt.md](readme-qt.md) for instructions on building Parabola-Qt, the
 graphical user interface.
 
 Compilers Supported
@@ -74,10 +74,10 @@ MSYS shell:
 	mkdir miniupnpc
 	cp *.h miniupnpc/
 
-Bitcoin
+Parabola
 -------
 DOS prompt:
 
-	cd \bitcoin\src
+	cd \parabola\src
 	mingw32-make -f makefile.mingw
-	strip bitcoind.exe
+	strip parabolad.exe

@@ -1,6 +1,6 @@
 [Protocol]
-exec=bitcoin-qt '%u'
-protocol=bitcoin
+exec=parabola-qt '%u'
+protocol=parabola
 input=none
 output=none
 helper=true

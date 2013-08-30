@@ -161,9 +161,9 @@ void Intro::pickDataDirectory(bool fIsTestnet)
         Intro intro;
         intro.setDataDirectory(dataDir);
         if (!fIsTestnet)
-            intro.setWindowIcon(QIcon(":icons/bitcoin"));
+            intro.setWindowIcon(QIcon(":icons/parabola"));
         else
-            intro.setWindowIcon(QIcon(":icons/bitcoin_testnet"));
+            intro.setWindowIcon(QIcon(":icons/parabola_testnet"));
 
         while(true)
         {
@@ -177,7 +177,7 @@ void Intro::pickDataDirectory(bool fIsTestnet)
                 fs::create_directory(dataDir.toStdString());
                 break;
             } catch(fs::filesystem_error &e) {
-                QMessageBox::critical(0, QObject::tr("Bitcoin"),
+                QMessageBox::critical(0, QObject::tr("Parabola"),
                                       QObject::tr("Error: Specified data directory \"%1\" can not be created.").arg(dataDir));
                 /* fall through, back to choosing screen */
             }

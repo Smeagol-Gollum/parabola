@@ -2,7 +2,7 @@
  * W.J. van der Laan 2011-2012
  */
 
-#include "bitcoingui.h"
+#include "parabolagui.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
 #include "optionsmodel.h"
@@ -26,8 +26,8 @@
 #include <QLibraryInfo>
 #include <QSettings>
 
-#if defined(BITCOIN_NEED_QT_PLUGINS) && !defined(_BITCOIN_QT_PLUGINS_INCLUDED)
-#define _BITCOIN_QT_PLUGINS_INCLUDED
+#if defined(PARABOLA_NEED_QT_PLUGINS) && !defined(_PARABOLA_QT_PLUGINS_INCLUDED)
+#define _PARABOLA_QT_PLUGINS_INCLUDED
 #define __INSURE__
 #include <QtPlugin>
 Q_IMPORT_PLUGIN(qcncodecs)
@@ -41,7 +41,7 @@ Q_IMPORT_PLUGIN(qtaccessiblewidgets)
 Q_DECLARE_METATYPE(bool*)
 
 // Need a global reference for the notifications to find the GUI
-static BitcoinGUI *guiref;
+static ParabolaGUI *guiref;
 static SplashScreen *splashref;
 
 static bool ThreadSafeMessageBox(const std::string& message, const std::string& caption, unsigned int style)
@@ -99,7 +99,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("bitcoin-core", psz).toStdString();
+    return QCoreApplication::translate("parabola-core", psz).toStdString();
 }
 
 /* Handle runaway exceptions. Shows a message box with the problem and quits the program.
@@ -107,7 +107,7 @@ static std::string Translate(const char* psz)
 static void handleRunawayException(std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
-    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. Bitcoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
+    QMessageBox::critical(0, "Runaway exception", ParabolaGUI::tr("A fatal error occurred. Parabola can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
     exit(1);
 }
 
@@ -142,11 +142,11 @@ static void initTranslations(QTranslator &qtTranslatorBase, QTranslator &qtTrans
     if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         QApplication::installTranslator(&qtTranslator);
 
-    // Load e.g. bitcoin_de.qm (shortcut "de" needs to be defined in bitcoin.qrc)
+    // Load e.g. parabola_de.qm (shortcut "de" needs to be defined in parabola.qrc)
     if (translatorBase.load(lang, ":/translations/"))
         QApplication::installTranslator(&translatorBase);
 
-    // Load e.g. bitcoin_de_DE.qm (shortcut "de_DE" needs to be defined in bitcoin.qrc)
+    // Load e.g. parabola_de_DE.qm (shortcut "de_DE" needs to be defined in parabola.qrc)
     if (translator.load(lang_territory, ":/translations/"))
         QApplication::installTranslator(&translator);
 }
@@ -164,7 +164,7 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 }
 #endif
 
-#ifndef BITCOIN_QT_TEST
+#ifndef PARABOLA_QT_TEST
 int main(int argc, char *argv[])
 {
     bool fMissingDatadir = false;
@@ -174,7 +174,7 @@ int main(int argc, char *argv[])
 
     // Command-line options take precedence:
     ParseParameters(argc, argv);
-    // ... then bitcoin.conf:
+    // ... then parabola.conf:
     if (!boost::filesystem::is_directory(GetDataDir(false))) {
         fMissingDatadir = true;
     } else {
@@ -191,7 +191,7 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForTr());
 #endif
 
-    Q_INIT_RESOURCE(bitcoin);
+    Q_INIT_RESOURCE(parabola);
     QApplication app(argc, argv);
 
     // Register meta types used for QMetaObject::invokeMethod
@@ -199,12 +199,12 @@ int main(int argc, char *argv[])
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
-    QApplication::setOrganizationName("Bitcoin");
-    QApplication::setOrganizationDomain("bitcoin.org");
+    QApplication::setOrganizationName("Parabola");
+    QApplication::setOrganizationDomain("parabola.org");
     if (TestNet()) // Separate UI settings for testnet
-        QApplication::setApplicationName("Bitcoin-Qt-testnet");
+        QApplication::setApplicationName("Parabola-Qt-testnet");
     else
-        QApplication::setApplicationName("Bitcoin-Qt");
+        QApplication::setApplicationName("Parabola-Qt");
 
     // Now that QSettings are accessible, initialize translations
     QTranslator qtTranslatorBase, qtTranslator, translatorBase, translator;
@@ -218,17 +218,17 @@ int main(int argc, char *argv[])
 
     // Now that translations are initialized check for errors and allow a translatable error message
     if (fMissingDatadir) {
-        QMessageBox::critical(0, QObject::tr("Bitcoin"),
+        QMessageBox::critical(0, QObject::tr("Parabola"),
                               QObject::tr("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return 1;
     }
     else if (fSelParFromCLFailed) {
-        QMessageBox::critical(0, QObject::tr("Bitcoin"), QObject::tr("Error: Invalid combination of -regtest and -testnet."));
+        QMessageBox::critical(0, QObject::tr("Parabola"), QObject::tr("Error: Invalid combination of -regtest and -testnet."));
         return 1;
     }
 
     // Start up the payment server early, too, so impatient users that click on
-    // bitcoin: links repeatedly have their payment requests routed to this process:
+    // parabola: links repeatedly have their payment requests routed to this process:
     PaymentServer* paymentServer = new PaymentServer(&app);
 
     // User language is set up: pick a data directory
@@ -284,7 +284,7 @@ int main(int argc, char *argv[])
 
         boost::thread_group threadGroup;
 
-        BitcoinGUI window(TestNet(), 0);
+        ParabolaGUI window(TestNet(), 0);
         guiref = &window;
 
         QTimer* pollShutdownTimer = new QTimer(guiref);
@@ -323,7 +323,7 @@ int main(int argc, char *argv[])
                 }
 
                 // Now that initialization/startup is done, process any command-line
-                // bitcoin: URIs or payment requests:
+                // parabola: URIs or payment requests:
                 QObject::connect(paymentServer, SIGNAL(receivedPaymentRequest(SendCoinsRecipient)),
                                  &window, SLOT(handlePaymentRequest(SendCoinsRecipient)));
                 QObject::connect(&walletModel, SIGNAL(coinsSent(CWallet*,SendCoinsRecipient,QByteArray)),
@@ -341,7 +341,7 @@ int main(int argc, char *argv[])
                 window.removeAllWallets();
                 guiref = 0;
             }
-            // Shutdown the core and its threads, but don't exit Bitcoin-Qt here
+            // Shutdown the core and its threads, but don't exit Parabola-Qt here
             threadGroup.interrupt_all();
             threadGroup.join_all();
             Shutdown();
@@ -360,4 +360,4 @@ int main(int argc, char *argv[])
     }
     return 0;
 }
-#endif // BITCOIN_QT_TEST
+#endif // PARABOLA_QT_TEST
