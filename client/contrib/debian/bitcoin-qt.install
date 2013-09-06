@@ -1,6 +1,0 @@
-parabola-qt usr/bin
-share/pixmaps/parabola32.xpm usr/share/pixmaps
-share/pixmaps/parabola16.xpm usr/share/pixmaps
-share/pixmaps/parabola128.png usr/share/pixmaps
-debian/parabola-qt.desktop usr/share/applications
-debian/parabola-qt.protocol usr/share/kde4/services/

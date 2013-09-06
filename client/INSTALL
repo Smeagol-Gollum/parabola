@@ -1,9 +1,0 @@
-Building Parabola
-
-See doc/readme-qt.md for instructions on building Parabola-Qt,
-the intended-for-end-users, nice-graphical-interface, reference
-implementation of Parabola.
-
-See doc/build-*.md for instructions on building parabolad,
-the intended-for-services, no-graphical-interface, reference
-implementation of Parabola.
