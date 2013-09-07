@@ -1,4 +1,4 @@
-Bitcoin integration/staging tree
+Parabola integration/staging tree
 ================================
 
 http://www.bitcoin.org
